@@ -1,16 +1,16 @@
 
  public class Main
 {
-    public class Account {
+    public static class Account {
         private String owner;
         private double balance;
 
-        public void Account(String owner) {
+        public Account(String owner) {
             this.owner = owner;
             this.balance = 0;
         }
 
-        public void Account(String owner, double balance) {
+        public  Account(String owner, double balance) {
             this.owner = owner;
             this.balance = balance;
         }
@@ -43,8 +43,11 @@
     public static void main(String[] args)
     {
 
+Account  firstObject= new  Account("johan",1000);
+
+ System.out.println(firstObject.getOwner());
 
 
-        System.out.println("Börjar projectet");
+
     }
 }
