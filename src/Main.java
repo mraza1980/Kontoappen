@@ -35,6 +35,12 @@
             if (amount < balance) {
                 balance -= amount;
             }
+
+
+            else
+            {
+                System.out.println(" You have insuffient balance ");
+            }
         }
 
 
@@ -46,6 +52,7 @@
 Account  firstObject= new  Account("johan",1000);
 
  System.out.println(firstObject.getOwner());
+        System.out.println(firstObject.getBalance());
 
 
 
