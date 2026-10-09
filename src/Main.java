@@ -1,60 +1,81 @@
 
- public class Main
-{
-    public static class Account {
-        private String owner;
-        private double balance;
+import java.util.Scanner;
 
-        public Account(String owner) {
-            this.owner = owner;
-            this.balance = 0;
-        }
+public class Main {
 
-        public  Account(String owner, double balance) {
-            this.owner = owner;
-            this.balance = balance;
-        }
+    public static void main(String[] args) {
 
-        public String getOwner() {
-            return owner;
-        }
+        Scanner input = new Scanner(System.in);
 
-        public double getBalance() {
-            return balance;
-        }
+        AccountRegister register = new AccountRegister();
 
-        public void desposit(double amount) {
+        boolean executeProgram = true;
 
-            if (amount < 0) {
-                System.out.println("You can deposit  Zero (0) Amount:");
+        while (executeProgram) {
+
+            System.out.println("\n****** Welcome ******");
+            System.out.println("****** Bank Menu ******");
+            System.out.println("1. Create Account");
+            System.out.println("2. List Accounts");
+            System.out.println("3. Deposit Money");
+            System.out.println("4. Withdraw Money");
+            System.out.println("5. Exit");
+
+            System.out.print("\nChoose an option: ");
+
+            int choice = input.nextInt();
+            input.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    createAccount(input, register);
+                    break;
+
+                case 2:
+                    register. listofAccounts();
+                    break;
+
+                case 3:
+                    System.out.println(
+                            "Deposit functionality not implemented yet."
+                    );
+                    break;
+
+                case 4:
+                    System.out.println(
+                            "Withdrawal functionality not implemented yet."
+                    );
+                    break;
+
+                case 5:
+                    executeProgram = false;
+                    System.out.println("Goodbye!");
+                    break;
+
+                default:
+                    System.out.println(
+                            "Invalid choice. Please choose 1-5."
+                    );
             }
-            balance += amount;
         }
 
-        public void withdraw(double amount) {
-            if (amount < balance) {
-                balance -= amount;
-            }
-
-
-            else
-            {
-                System.out.println(" You have insuffient balance ");
-            }
-        }
-
-
+        input.close();
     }
 
-    public static void main(String[] args)
-    {
+    private static void createAccount(
+            Scanner input,
+            AccountRegister register) {
 
-Account  firstObject= new  Account("johan",1000);
+        System.out.print("Enter owner name: ");
+        String owner = input.nextLine();
 
- System.out.println(firstObject.getOwner());
-        System.out.println(firstObject.getBalance());
+        System.out.print("Enter initial balance: ");
+        double balance = input.nextDouble();
+        input.nextLine();
 
+        register.creatAccount(owner, balance);
 
-
+        System.out.println("Account created successfully.");
     }
 }
